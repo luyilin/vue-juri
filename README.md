@@ -42,7 +42,7 @@ export default {
 | -------- | ----------- | ---- | ------- |
 | root | The path of the markdown file. | string | /docs/ |
 | doc-list | Array of the example markdown files. | array | ['demo.md'] |
-| expandAll | Expand all usages. | boolean | false |
+| expand-all | Expand all usages. | boolean | false |
 | highlight | Whether to highlight code blocks, you can supply a function to customize this, use prismjs to highlight code by default. | boolean / function | true |
 
 ## Slot
