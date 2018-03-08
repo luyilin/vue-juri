@@ -1,12 +1,12 @@
 {
   "name": "vue-juri",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A component for Vue.js to display the demo and usage elegantly.",
   "repository": {
     "url": "luyilin/vue-juri",
     "type": "git"
   },
-  "main": "dist/vue-juri.cjs.js",
+  "main": "dist/vue-juri.js",
   "files": [
     "dist"
   ],
