@@ -1,32 +1,39 @@
 <template>
-  <div class="examples">
-    <div class="left">
-      <demo 
-        v-for="i, index in leftDoc"
-        :key="index"
-        :expand-all="expandAll" 
-        :doc="i"
-        :root="root" 
-        :highlight="highlight"
-        :slot-name="demoIndex('left', index)">
-        <slot 
-          :name="demoIndex('left', index)"
-          :slot="demoIndex('left', index)"/>
-      </demo>
-    </div>
-    <div class="right">
-      <demo 
-        v-for="i, index in rightDoc"
-        :key="index"
-        :expand-all="expandAll" 
-        :doc="i"
-        :root="root" 
-        :highlight="highlight"
-        :slot-name="demoIndex('right', index)">
-        <slot 
-          :name="demoIndex('right', index)"
-          :slot="demoIndex('right', index)"/>
-      </demo>
+  <div>
+    <h2 class="title">
+      <span>{{ title }}</span>
+      <svg @click="expand = !expand"
+           t="1519462199298" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2155" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><path d="M411.485726 111.200056H138.199901a43.350032 43.350032 0 0 0-43.350032 43.350032v273.2786a43.350032 43.350032 0 0 0 43.350032 43.350032h273.285825a43.350032 43.350032 0 0 0 43.350032-43.350032V154.550088a43.350032 43.350032 0 0 0-43.350032-43.350032zM879.384294 111.200056H606.105694a43.350032 43.350032 0 0 0-43.350032 43.350032v273.2786a43.350032 43.350032 0 0 0 43.350032 43.350032h273.2786a43.350032 43.350032 0 0 0 43.350032-43.350032V154.550088a43.350032 43.350032 0 0 0-43.350032-43.350032zM411.485726 554.844281H138.199901a43.350032 43.350032 0 0 0-43.350032 43.350032v273.285825a43.350032 43.350032 0 0 0 43.350032 43.350032h273.285825a43.350032 43.350032 0 0 0 43.350032-43.350032V598.194313a43.350032 43.350032 0 0 0-43.350032-43.350032zM879.384294 554.844281H606.105694a43.350032 43.350032 0 0 0-43.350032 43.350032v273.285825a43.350032 43.350032 0 0 0 43.350032 43.350032h273.2786a43.350032 43.350032 0 0 0 43.350032-43.350032V598.194313a43.350032 43.350032 0 0 0-43.350032-43.350032z" fill="#515151" p-id="2156"></path></svg>
+    </h2>
+    <div class="examples">
+      <div class="left">
+        <demo
+          v-for="i, index in leftDoc"
+          :key="index"
+          :expand-all="expand"
+          :doc="i"
+          :root="root"
+          :highlight="highlight"
+          :slot-name="demoIndex('left', index)">
+          <slot
+            :name="demoIndex('left', index)"
+            :slot="demoIndex('left', index)"/>
+        </demo>
+      </div>
+      <div class="right">
+        <demo
+          v-for="i, index in rightDoc"
+          :key="index"
+          :expand-all="expand"
+          :doc="i"
+          :root="root"
+          :highlight="highlight"
+          :slot-name="demoIndex('right', index)">
+          <slot
+            :name="demoIndex('right', index)"
+            :slot="demoIndex('right', index)"/>
+        </demo>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +53,10 @@ export default {
       type: String,
       default: '/docs/'
     },
+    title: {
+      type: String,
+      default: 'Examples'
+    },
     docList: {
       type: Array,
       default: () => ['demo.md']
@@ -58,6 +69,12 @@ export default {
       type: [Boolean, Function],
       default: true
     },
+  },
+
+  data () {
+    return {
+      expand: this.expandAll
+    }
   },
 
   computed: {
@@ -82,7 +99,16 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .title {
+    margin-bottom: 65px;
+    svg {
+      color: #555;
+      width: 15px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
   .examples {
     margin: 0 -8px;
     display: inline-block;
