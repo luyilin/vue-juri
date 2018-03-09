@@ -4,9 +4,9 @@
 
 ## Introduction
 
-vue-juri is a component for Vue.js that fetches Markdown files and uses slots to display the demo and usage elegantly.
+Vue-juri is a component for Vue.js that fetches Markdown files and uses slots to display the demos and usages elegantly.
 
-The design is inspired by [Ant Design](https://ant.design/components/rate/)! I like the elegant design to display a list of examples.
+The design is inspired by [Ant Design](https://ant.design/components/rate/)! I like the elegant way to display a list of examples.
 
 The name comes from Juri Yukawa in *Kokkoku* 💃
 
@@ -36,6 +36,46 @@ export default {
 </script>
 ```
 
+## Guides
+
+### What are example docs
+
+Example docs are a list of markdown files that contain the code blocks of the examples' usage. We render the code blocks in the usage part of the demo. For example:
+
+```
+<template>
+  <star-rate :value="4"/>
+</template>
+
+<script>
+import StarRate from 'vue-cute-rate'
+
+export default {
+  components: {
+    StarRate
+  }
+}
+</script>
+```
+
+### Set the examples' custom title and description
+
+You can use following html comment marks in each example markdown file to set custom title and description of it.
+
+```
+<!-- title-start -->
+
+title: Half star
+
+<!-- title-stop -->
+
+<!-- desc-start -->
+
+desc: Support select half star.
+
+<!-- desc-stop -->
+```
+
 ## Options
 
 | Property | Description | type | Default |
@@ -54,19 +94,19 @@ Here is a simple example:
 ```vue
 <template>
   <div id="app">
-    <kokk :doc-list="['demo.md']">
+    <juri :doc-list="['demo.md']">
       <star-rate slot="demo-0" :value="4"/>
-    </kokk>
+    </juri>
   </div>
 </template>
 
 <script>
-import Kokk from 'kokk'
+import Juri from 'vue-juri'
 import StarRate from 'vue-cute-rate'
 
 export default {
   components: {
-    Kokk,
+    Juri,
     StarRate
   }
 }
