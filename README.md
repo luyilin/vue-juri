@@ -62,10 +62,6 @@ export default {
 
 You can use following html comment marks in each example markdown file to set custom title and description of it.
 
-### Where to set the ```docs``` directory
-
-The ```docs``` directory was set at the same directory where `.vue` file is located by default.
-
 ```
 <!-- title-start -->
 
@@ -79,6 +75,11 @@ desc: Support select half star.
 
 <!-- desc-stop -->
 ```
+
+### Where to set the ```docs``` directory
+
+The ```docs``` directory was set at the same directory where `.vue` file is located by default.
+
 
 ## Options
 
