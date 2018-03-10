@@ -48,7 +48,7 @@ export default {
     },
     root: {
       type: String,
-      default: '/docs/'
+      default: '../docs/'
     },
     doc: {
       type: String,

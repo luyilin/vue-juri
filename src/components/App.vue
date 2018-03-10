@@ -44,7 +44,7 @@ export default {
   props: {
     root: {
       type: String,
-      default: '/docs/'
+      default: '../docs/'
     },
     docList: {
       type: Array,
