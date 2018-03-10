@@ -62,6 +62,10 @@ export default {
 
 You can use following html comment marks in each example markdown file to set custom title and description of it.
 
+### Where to set the ```docs``` directory
+
+The ```docs``` directory was set at the same directory where `.vue` file is located by default.
+
 ```
 <!-- title-start -->
 
@@ -80,7 +84,6 @@ desc: Support select half star.
 
 | Property | Description | type | Default |
 | -------- | ----------- | ---- | ------- |
-| root | The path of the markdown file. | string | /docs/ |
 | doc-list | Array of the example markdown files. | array | ['demo.md'] |
 | expand-all | Expand all usages. | boolean | false |
 | highlight | Whether to highlight code blocks, you can supply a function to customize this, use prismjs to highlight code by default. | boolean / function | true |

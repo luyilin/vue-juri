@@ -46,10 +46,6 @@ export default {
       type: [Boolean, Function],
       default: true
     },
-    root: {
-      type: String,
-      default: '../docs/'
-    },
     doc: {
       type: String,
       default: 'basic.md'
@@ -86,7 +82,8 @@ export default {
   },
 
   async created () {
-    const content = await fetch(`${this.root}${this.doc}`).then(res => res.text())
+//    const content = await fetch(`${this.root}${this.doc}`).then(res => res.text())
+    const doc = require(`raw-loader!../docs/${this.doc}`)
     const renderer = new marked.Renderer()
     const highlightFn = typeof this.highlight === 'function' ? this.highlight : highlight
 
@@ -118,7 +115,7 @@ export default {
       return html
     }
 
-    let html = marked(content, {
+    let html = marked(doc, {
       renderer,
       highlight: this.highlight && highlightFn
     })

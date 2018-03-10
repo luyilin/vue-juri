@@ -42,10 +42,6 @@ export default {
   },
 
   props: {
-    root: {
-      type: String,
-      default: '../docs/'
-    },
     docList: {
       type: Array,
       default: () => ['demo.md']
