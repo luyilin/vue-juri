@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Vue-juri is a component for Vue.js that fetches Markdown files and uses slots to display the demos and usages elegantly.
+Vue-juri is a component for Vue.js that loads a list of Markdown files and uses slots to display the demos and usages elegantly.
 
 The design is inspired by [Ant Design](https://ant.design/components/rate/)! I like the elegant way to display a list of examples.
 
@@ -60,25 +60,18 @@ export default {
 
 ### Set the examples' custom title and description
 
-You can use following html comment marks in each example markdown file to set custom title and description of it.
+You can use following marks in each example markdown file to set custom title and description of it.
 
 ```
-<!-- title-start -->
-
-title: Half star
-
-<!-- title-stop -->
-
-<!-- desc-start -->
-
-desc: Support select half star.
-
-<!-- desc-stop -->
+---
+title: Basic 
+desc: The simplest usage.
+---
 ```
 
-### Where to set the ```docs``` directory
+### Where to set the docs
 
-The ```docs``` directory was set at the same directory where `.vue` file is located by default.
+The docs were set to a ```docs``` directory, and the path of the directory was ```../docs/``` relatived to ```.vue``` file by default.
 
 
 ## Options
