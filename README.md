@@ -2,6 +2,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/vue-juri.svg?style=flat)](https://npmjs.com/package/vue-juri) [![NPM downloads](https://img.shields.io/npm/dm/vue-juri.svg?style=flat)](https://npmjs.com/package/vue-juri) [![CircleCI](https://circleci.com/gh/luyilin/vue-juri/tree/master.svg?style=shield)](https://circleci.com/gh/luyilin/vue-juri/tree/master)
 
+[DEMO](https://vue-juri.netlify.com/)
+
 ## Introduction
 
 Vue-juri is a component for Vue.js that loads a list of Markdown files and uses slots to display the demos and usages elegantly.
