@@ -23,11 +23,6 @@
     "email": "luyilin12@gmail.com"
   },
   "license": "MIT",
-  "poi": {
-    "entry": "example/index.js",
-    "dist": "example/dist",
-    "homepage": "./"
-  },
   "bili": {
     "format": [
       "cjs",
@@ -54,10 +49,9 @@
   },
   "dependencies": {
     "marked3": "^0.5.2",
+    "post-loader": "^2.0.0",
     "prismjs": "^1.12.0",
-    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.7",
-    "unfetch": "^3.0.0",
     "vue-cute-rate": "^0.0.8"
   }
 }

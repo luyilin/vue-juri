@@ -1,5 +1,7 @@
 <template>
-  <div class="box" :class="{expand: codeExpand}">
+  <div
+    :class="{expand: codeExpand}"
+    class="box">
     <div class="box-demo">
       <slot :name="slotName"/>
     </div>
@@ -8,16 +10,24 @@
         <a>{{ docTitle }}</a>
       </div>
       <p>{{ docDesc }}</p>
-      <span class="expand-icon btn-hover btn-hover-slide" :data-tip="tip">
-        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
-             :class="iconShow"
-             @click="handleCodeExpand">
-        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
-             :class="iconHide"
-             @click="handleCodeExpand">
+      <span
+        :data-tip="tip"
+        class="expand-icon btn-hover btn-hover-slide">
+        <img
+          :class="iconShow"
+          alt="expand code"
+          src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
+          @click="handleCodeExpand">
+        <img
+          :class="iconHide"
+          alt="expand code"
+          src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
+          @click="handleCodeExpand">
       </span>
     </div>
-    <div class="code" v-html="html"/>
+    <div
+      class="code"
+      v-html="html"/>
   </div>
 </template>
 
@@ -30,14 +40,6 @@ export default {
   name: 'Demo',
 
   props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    desc: {
-      type: String,
-      default: ''
-    },
     expandAll: {
       type: Boolean,
       default: false
@@ -61,8 +63,8 @@ export default {
       codeExpand: this.expandAll,
       html: '',
       tip: 'show code',
-      docTitle: this.title,
-      docDesc: this.desc
+      docTitle: '',
+      docDesc: ''
     }
   },
 
@@ -81,61 +83,14 @@ export default {
     }
   },
 
-  async created () {
-//    const content = await fetch(`${this.root}${this.doc}`).then(res => res.text())
-    const doc = require(`raw-loader!../docs/${this.doc}`)
-    const renderer = new marked.Renderer()
-    const highlightFn = typeof this.highlight === 'function' ? this.highlight : highlight
-
-    let titleExist = 0
-    let descExist = 0
-    const TITLE_START = /^<!--\s*title-start\s*-->/
-    const TITLE_STOP = /^<!--\s*title-stop\s*-->/
-    const TITLE_START_HOLDER = '#!!!title-start!!!'
-    const TITLE_STOP_HOLDER = '#!!!title-stop!!!'
-    const DESC_START = /^<!--\s*desc-start\s*-->/
-    const DESC_STOP = /^<!--\s*desc-stop\s*-->/
-    const DESC_START_HOLDER = '#!!!desc-start!!!'
-    const DESC_STOP_HOLDER = '#!!!desc-stop!!!'
-    renderer.html = html => {
-      if (TITLE_START.test(html)) {
-        titleExist++
-        return TITLE_START_HOLDER
-      }
-      if (TITLE_STOP.test(html)) {
-        return TITLE_STOP_HOLDER
-      }
-      if (DESC_START.test(html)) {
-        descExist++
-        return DESC_START_HOLDER
-      }
-      if (DESC_STOP.test(html)) {
-        return DESC_STOP_HOLDER
-      }
-      return html
-    }
-
-    let html = marked(doc, {
-      renderer,
-      highlight: this.highlight && highlightFn
+  created () {
+    let doc = require(`../docs/${this.doc}`)
+    let data = doc.data
+    this.docTitle = data.title
+    this.docDesc = data.desc
+    setTimeout(() => {
+      this.html = doc.html
     })
-
-    const TAG_RE = new RegExp(`<\\S*>`, 'gi')
-
-    if (titleExist) {
-      const TITLE_RE = new RegExp(`${TITLE_START_HOLDER}([\\s\\S]*)${TITLE_STOP_HOLDER}`, 'gi')
-      this.docTitle = (html.match(TITLE_RE))[0].replace(TITLE_START_HOLDER, '').replace(TITLE_STOP_HOLDER, '')
-        .replace(TAG_RE, '').split(':')[1]
-      html = html.replace(TITLE_RE, '')
-    }
-
-    if (descExist) {
-      const DESC_RE = new RegExp(`${DESC_START_HOLDER}([\\s\\S]*)${DESC_STOP_HOLDER}`, 'gi')
-      this.docDesc = (html.match(DESC_RE))[0].replace(DESC_START_HOLDER, '').replace(DESC_STOP_HOLDER, '')
-        .replace(TAG_RE, '').split(':')[1]
-      html = html.replace(DESC_RE, '')
-    }
-    this.html = html
   },
 
   methods: {

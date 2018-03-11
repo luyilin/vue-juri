@@ -6,7 +6,6 @@
         :key="index"
         :expand-all="expandAll"
         :doc="i"
-        :root="root"
         :highlight="highlight"
         :slot-name="demoIndex('left', index)">
         <slot
@@ -20,7 +19,6 @@
         :key="index"
         :expand-all="expandAll"
         :doc="i"
-        :root="root"
         :highlight="highlight"
         :slot-name="demoIndex('right', index)">
         <slot
