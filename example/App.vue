@@ -17,7 +17,7 @@
       </svg>
     </h2>
     <juri
-      :doc-list="['basic.md', 'half.md']"
+      :doc-list="docList"
       :expand-all="expand">
       <star-rate
         slot="demo-0"
@@ -35,16 +35,19 @@
 <script>
 import Juri from '../src'
 import StarRate from 'vue-cute-rate'
+import basic from 'raw-loader!./docs/basic.md'
+import half from 'raw-loader!./docs/half.md'
 
 export default {
-
   components: {
     Juri,
     StarRate
   },
+
   data () {
     return {
-      expand: false
+      expand: false,
+      docList: [basic, half]
     }
   },
 

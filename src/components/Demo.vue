@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import fetch from 'unfetch'
 import marked from 'marked3'
 import highlight from '../utils/highlight'
+import matter from 'gray-matter'
 
 export default {
   name: 'Demo',
@@ -84,12 +84,18 @@ export default {
   },
 
   created () {
-    let doc = require(`../docs/${this.doc}`)
+    let doc = matter(this.doc)
     let data = doc.data
     this.docTitle = data.title
     this.docDesc = data.desc
+    const renderer = new marked.Renderer()
+    const highlightFn = typeof this.highlight === 'function' ? this.highlight : highlight
+    let html = marked(doc.content, {
+      renderer,
+      highlight: this.highlight && highlightFn
+    })
     setTimeout(() => {
-      this.html = doc.html
+      this.html = html
     })
   },
 

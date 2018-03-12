@@ -1,6 +1,6 @@
 {
   "name": "vue-juri",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A component for Vue.js to display the demo and usage elegantly.",
   "repository": {
     "url": "luyilin/vue-juri",
@@ -48,9 +48,10 @@
     "vue-test-utils": "^1.0.0-beta.9"
   },
   "dependencies": {
+    "gray-matter": "^3.1.1",
     "marked3": "^0.5.2",
-    "post-loader": "^2.0.0",
     "prismjs": "^1.12.0",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.7",
     "vue-cute-rate": "^0.0.8"
   }

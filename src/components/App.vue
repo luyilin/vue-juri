@@ -42,7 +42,7 @@ export default {
   props: {
     docList: {
       type: Array,
-      default: () => ['demo.md']
+      default: () => []
     },
     expandAll: {
       type: Boolean,
