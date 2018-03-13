@@ -85,15 +85,16 @@ The docs were set to a ```docs``` directory, and the path of the directory was `
 
 ### How to import the markdown files
 
-You need to use ```raw-loader``` to import files as a string. See [raw-loader](https://github.com/webpack-contrib/raw-loader) for more details.
+You need to use ```raw-loader``` to import files as a string. 
 
-You can use the loader via webpack config or inline.
+You can use the loader via webpack config or inline. View [raw-loader](https://github.com/webpack-contrib/raw-loader) for more details.
 
 #### via webpack config
 
 webpack.config.js
 
 ```
+
 module.exports = {
  module: {
    rules: [
@@ -104,6 +105,7 @@ module.exports = {
    ]
  }
 }
+```
 
 In your application
 
