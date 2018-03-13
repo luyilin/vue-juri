@@ -24,15 +24,21 @@ CDN: [UNPKG](https://unpkg.com/vue-juri/) | [jsDelivr](https://cdn.jsdelivr.net/
 
 ```vue
 <template>
-  <juri></juri>
+  <juri :doc-list="docList"></juri>
 </template>
 
 <script>
 import Juri from 'vue-juri'
+import basic from 'raw-loader!./docs/basic.md'
 
 export default {
   components: {
     Juri
+  },
+  data () {
+    return {
+      docList: [basic]
+    }
   }
 }
 </script>
@@ -65,6 +71,7 @@ export default {
 You can use following marks in each example markdown file to set custom title and description of it.
 
 ```
+
 ---
 title: Basic 
 desc: The simplest usage.
@@ -75,6 +82,42 @@ desc: The simplest usage.
 
 The docs were set to a ```docs``` directory, and the path of the directory was ```../docs/``` relatived to ```.vue``` file by default.
 
+
+### How to import the markdown files
+
+You need to use ```raw-loader``` to import files as a string. See [raw-loader](https://github.com/webpack-contrib/raw-loader) for more details.
+
+You can use the loader via webpack config or inline.
+
+#### via webpack config
+
+webpack.config.js
+
+```
+module.exports = {
+ module: {
+   rules: [
+     {
+       test: /\.md/,
+       use: 'raw-loader'
+     }
+   ]
+ }
+}
+
+In your application
+
+```
+import file from './docs/basic.md'
+```
+
+#### Inline 
+
+In your application
+
+```
+import file from 'raw-loader!./docs/basic.md'
+```
 
 ## Options
 
@@ -93,7 +136,7 @@ Here is a simple example:
 ```vue
 <template>
   <div id="app">
-    <juri :doc-list="['demo.md']">
+    <juri :doc-list="docList">
       <star-rate slot="demo-0" :value="4"/>
     </juri>
   </div>
@@ -101,12 +144,18 @@ Here is a simple example:
 
 <script>
 import Juri from 'vue-juri'
+import basic from 'raw-loader!./docs/basic.md'
 import StarRate from 'vue-cute-rate'
 
 export default {
   components: {
     Juri,
     StarRate
+  },
+  data () {
+    return {
+      docList: [basic]
+    }
   }
 }
 </script>
