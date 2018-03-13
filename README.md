@@ -121,7 +121,7 @@ In your application
 import file from 'raw-loader!./docs/basic.md'
 ```
 
-## Options
+## Props
 
 | Property | Description | type | Default |
 | -------- | ----------- | ---- | ------- |
