@@ -128,7 +128,7 @@ import file from 'raw-loader!./docs/basic.md'
 | doc-list | Array of the example markdown files. | array | [] |
 | expand-all | Whether to expand all usages. | boolean | false |
 | highlight | Whether to highlight code blocks, you can supply a function to customize this, use prismjs to highlight code by default. | boolean / function | true |
-| big-demo | Use a big demo-box which not contains left and right columns. | boolean | false |
+| big-demo | Display as a big demo-box which not contains left and right columns. | boolean | false |
 
 ## Slot
 
