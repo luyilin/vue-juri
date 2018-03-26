@@ -80,7 +80,7 @@ desc: The simplest usage.
 
 ### Where to set the docs
 
-The docs were set to a ```docs``` directory, and the path of the directory was ```../docs/``` relatived to ```.vue``` file by default.
+The docs were set to a ```docs``` directory, and the path of the directory was ```./docs/``` relatived to ```.vue``` file by default.
 
 
 ### How to import the markdown files
